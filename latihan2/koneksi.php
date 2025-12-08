@@ -19,34 +19,34 @@ $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
 <body>
     <h1>Daftar Nama Siswa</h1>
 
-    <table border="1  ">
-        <?php while ($row = mysqli_fetch_assoc($result)) :?>
-        <tr>
-            <th>
-            NO.
-            </th>
-            <th>Aksi</th>
-            <th>Gambar</th>
-            <th>NRP</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Alamat</th>
-            <th>Jurusan</th>
-        </tr>
+    <table border="1">
+        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+            <tr>
+                <th>
+                    NO.
+                </th>
+                <th>Aksi</th>
+                <th>Gambar</th>
+                <th>NRP</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Alamat</th>
+                <th>Jurusan</th>
+            </tr>
 
-        <tr>
-            <td><?php echo $row["id_mahasiswa"]?></td>
-            <td>
-                <a href="">hapus |</a>
-                <a href="">ubah</a>
-            </td>
-            <td><img src="<?php echo $row["gambar"]?>"></td>
-            <td><?php echo $row["nrp"]?></td>
-            <td><?php echo $row["nama"]?></td>
-            <td><?php echo $row["email"]?></td>
-            <td><?php echo $row["alamat"]?></td>
-            <td><?php echo $row["jurusan"]?></td>
-        </tr>
+            <tr>
+                <td><?php echo $row["id_mahasiswa"] ?></td>
+                <td>
+                    <a href="">hapus |</a>
+                    <a href="">ubah</a>
+                </td>
+                <td><img src="img/<?php echo $row["gambar"] ?>"></td>
+                <td><?php echo $row["nrp"] ?></td>
+                <td><?php echo $row["nama"] ?></td>
+                <td><?php echo $row["email"] ?></td>
+                <td><?php echo $row["alamat"] ?></td>
+                <td><?php echo $row["jurusan"] ?></td>
+            </tr>
         <?php endwhile; ?>
     </table>
 
