@@ -1,11 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "belajarphp");
 $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
-
-
-// while ($mhs = mysqli_fetch_assoc($result)) {
-//     print_r($mhs);
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,41 +9,62 @@ $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koneksi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Daftar Nama Siswa</h1>
+<body class="bg-dark">
 
-    <table border="1">
-        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-            <tr>
-                <th>
-                    NO.
-                </th>
-                <th>Aksi</th>
-                <th>Gambar</th>
-                <th>NRP</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Alamat</th>
-                <th>Jurusan</th>
-            </tr>
+    <div class="container py-5">
 
-            <tr>
-                <td><?php echo $row["id_mahasiswa"] ?></td>
-                <td>
-                    <a href="">hapus |</a>
-                    <a href="">ubah</a>
-                </td>
-                <td><img src="img/<?php echo $row["gambar"] ?>"></td>
-                <td><?php echo $row["nrp"] ?></td>
-                <td><?php echo $row["nama"] ?></td>
-                <td><?php echo $row["email"] ?></td>
-                <td><?php echo $row["alamat"] ?></td>
-                <td><?php echo $row["jurusan"] ?></td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+
+                <h1 class="mb-4 fw-bold">Daftar Nama Siswa</h1>
+
+                <table class="table table-bordered table-striped bg-white">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>NO.</th>
+                            <th>Aksi</th>
+                            <th>Gambar</th>
+                            <th>NRP</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Alamat</th>
+                            <th>Jurusan</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                            <tr>
+                                <td><?= $i; ?></td>
+                                <td>
+                                    <a href="#" class="text-danger">hapus</a> |
+                                    <a href="#" class="text-primary">ubah</a>
+                                </td>
+                                <td>
+                                    <img src="img/<?= $row['gambar']; ?>"
+                                        alt=""
+                                        width="60"
+                                        class="img-thumbnail">
+                                </td>
+                                <td><?= $row["nrp"]; ?></td>
+                                <td><?= $row["nama"]; ?></td>
+                                <td><?= $row["email"]; ?></td>
+                                <td><?= $row["alamat"]; ?></td>
+                                <td><?= $row["jurusan"]; ?></td>
+                            </tr>
+                            <?php $i++; ?>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
 
 </body>
 
