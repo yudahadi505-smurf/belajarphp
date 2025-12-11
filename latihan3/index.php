@@ -1,6 +1,15 @@
 <?php
 require 'functions.php';
 $mahasiswa = select("SELECT * FROM mahasiswa");
+
+if (isset($_GET['hapus'])) {
+    if (hapus($_GET['hapus']) > 0) {
+        echo "<script>alert('Data berhasil dihapus!');document.location.href='index.php';</script>";
+    } else {
+        echo "<script>alert('Data gagal dihapus!');document.location.href='index.php';</script>";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +50,7 @@ $mahasiswa = select("SELECT * FROM mahasiswa");
                                 <tr>
                                     <td><?= $i; ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-outline-danger">Hapus</a>
+                                        <a href="index.php?hapus=<?= $row['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm ('Yakin Hapus ?')">Hapus</a>
                                         <a href="#" class="btn btn-sm btn-outline-primary ms-1">Ubah</a>
                                     </td>
                                     <td>

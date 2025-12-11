@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 if (isset($_POST["submit"])) {
     // cek apakah data berhasil ditambahkan atau tidak
     if (tambah($_POST) > 0) {
@@ -62,7 +63,11 @@ if (isset($_POST["submit"])) {
                                 <label for="jurusan" class="form-label">Jurusan</label>
                                 <input type="text" name="jurusan" id="jurusan" class="form-control" required />
                             </div>
-
+                            <div class="mb-3">
+                                <label for="gambar" class="form-label">Gambar</label>
+                                <input type="text" name="gambar" id="gambar" class="form-control" required />
+                            </div>
+                            <a href="index.php" class="btn btn-primary fw-semibold py-2 w-100 mb-2">Kembali</a>
                             <button type="submit" name="submit" class="btn btn-primary w-100 py-2 fw-semibold">Tambah Data</button>
                         </form>
                     </div>
