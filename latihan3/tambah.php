@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4 fw-bold">Tambah Data Mahasiswa</h2>
 
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="nrp" class="form-label">NRP</label>
                                 <input type="text" name="nrp" id="nrp" class="form-control" required />
@@ -65,7 +65,7 @@ if (isset($_POST["submit"])) {
                             </div>
                             <div class="mb-3">
                                 <label for="gambar" class="form-label">Gambar</label>
-                                <input type="text" name="gambar" id="gambar" class="form-control" required />
+                                <input type="file" name="gambar" id="gambar" class="form-control" required />
                             </div>
                             <a href="index.php" class="btn btn-primary fw-semibold py-2 w-100 mb-2">Kembali</a>
                             <button type="submit" name="submit" class="btn btn-primary w-100 py-2 fw-semibold">Tambah Data</button>
