@@ -41,8 +41,9 @@ if (isset($_POST["submit"])) {
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4 fw-bold">Ubah Data Mahasiswa</h2>
 
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?= $mahasiswa['id']; ?>">
+                            <input type="hidden" name="gambarLama" value="<?= $mahasiswa['gambar']; ?>">
                             <div class="mb-3">
                                 <label for="nrp" class="form-label">NRP</label>
                                 <input type="text" name="nrp" id="nrp" class="form-control" value="<?= $mahasiswa['nrp'] ?>" required />
@@ -69,7 +70,8 @@ if (isset($_POST["submit"])) {
                             </div>
                             <div class="mb-3">
                                 <label for="gambar" class="form-label">Gambar</label>
-                                <input type="text" name="gambar" id="gambar" class="form-control" value="<?= $mahasiswa['gambar'] ?>" required />
+                                <img src="img/<?= $mahasiswa['gambar'] ?>" alt="<?= $mahasiswa['gambar'] ?>" width="100" height="100" class="d-block mb-2">
+                                <input type="file" name="gambar" id="gambar" class="form-control" />
                             </div>
                             <a href="index.php" class="btn btn-primary fw-semibold py-2 w-100 mb-2">Kembali</a>
                             <button type="submit" name="submit" class="btn btn-primary w-100 py-2 fw-semibold">Ubah Data</button>

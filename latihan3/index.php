@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 $mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id ASC");
-
+//isset untuk mengecek apakah ada parameter hapus pada url
 if (isset($_GET['hapus'])) {
     if (hapus($_GET['hapus']) > 0) {
         echo "<script>alert('Data berhasil dihapus!');document.location.href='index.php';</script>";
