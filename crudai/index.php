@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require 'function.php';
 $mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id ASC");
 //isset untuk mengecek apakah ada parameter hapus pada url
 if (isset($_GET['hapus'])) {
@@ -37,6 +37,7 @@ if (isset($_POST['cari'])) {
 
                     <div class="col-md-5">
                         <form action="" method="post" class="d-flex gap-2">
+                            <input type="hidden" name="hapus" value="<?= $row = ['id']; ?>">
                             <input
                                 type="text"
                                 name="keyword"
