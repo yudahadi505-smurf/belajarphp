@@ -131,3 +131,36 @@ function cari($keyword)
               alamat LIKE '%$keyword%'";
     return select($query);
 }
+
+function register ($data){
+     global $conn;
+
+     $username = strtolower(htmlspecialchars($data['username']));
+     $email = htmlspecialchars($data['email']);
+     $password =  mysqli_real_escape_string($conn, $data['password']);
+     $password2 =  mysqli_real_escape_string($conn, $data['password2']);
+
+    $result = mysqli_query($conn, "SELECT username from user WHERE username = '$username'");
+
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+                alert('username sudah terdaftar!');
+              </script>";
+        return false;
+    }
+
+    if($password !== $password2){
+        echo "<script>
+                alert('konfirmasi password tidak sesuai!');
+              </script>";
+        return false;
+    } 
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO user (username, email, password ) VALUES ('$username','$email', '$password')";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+
+}

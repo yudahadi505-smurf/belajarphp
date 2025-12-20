@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+    exit;
+}
 require 'functions.php';
 $mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id ASC");
 //isset untuk mengecek apakah ada parameter hapus pada url
@@ -37,7 +43,7 @@ if (isset($_POST['cari'])) {
 
                     <div class="col-md-5">
                         <form action="" method="post" class="d-flex gap-2">
-                            <input type="hidden" name="hapus" value="<?= $row = ['id']; ?>">
+                            
                             <input
                                 type="text"
                                 name="keyword"
@@ -51,6 +57,7 @@ if (isset($_POST['cari'])) {
                     </div>
 
                     <div class="col-md-3 text-end">
+                        <a href="logout.php" class="btn btn-danger px-4 fw-semibold">Logout</a>
                         <a href="tambah.php" class="btn btn-success px-4 fw-semibold">
                             + Tambah Data
                         </a>
