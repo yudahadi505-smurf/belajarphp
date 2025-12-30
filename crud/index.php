@@ -26,6 +26,7 @@ if (isset($_GET['hapus'])) {
     }
 }
 if (isset($_POST['cari'])) {
+
     $mahasiswa = cari($_POST['keyword']);
 }
 ?>

@@ -138,6 +138,7 @@ function register($data)
 
     $username = strtolower(htmlspecialchars($data['username']));
     $email = htmlspecialchars($data['email']);
+    //mysqli_real_escape_string berfungsi untuk mengamankan inputan dari karakter khusus yang dapat merusak query sql
     $password =  mysqli_real_escape_string($conn, $data['password']);
     $password2 =  mysqli_real_escape_string($conn, $data['password2']);
 
